@@ -54,3 +54,25 @@ marcacoesNodeElm.forEach(marcacaoEl => {
         atualizaControles(selectedEl);
     });
 });
+
+// atualiza a marcação selecionada atual
+atualizaControles(document.querySelector('.marcacao.selecionada'));
+
+// Exercício 03
+
+// Modificando a cada mudança
+document.addEventListener('change', (e) => {
+    const selectedMarkEl = document.querySelector('.marcacao.selecionada');
+    const currentTarget = e.target;
+    const value = currentTarget.value;
+
+    if (currentTarget === inputXDaMarcacaoEl) selectedMarkEl.style.left = `${value}px`;
+    else if (currentTarget === inputYDaMarcacaoEl) selectedMarkEl.style.top = `${value}px`;
+    else if (currentTarget === inputLarguraDaMarcacaoEl) selectedMarkEl.style.width = `${value}px`;
+    else if (currentTarget === inputAlturaDaMarcacaoEl) selectedMarkEl.style.height = `${value}px`;
+    else if (currentTarget === inputTituloDaMarcacaoEl) selectedMarkEl.dataset.titulo = value;
+    else if (currentTarget === inputConteudoDaMarcacaoEl) selectedMarkEl.dataset.conteudo = value;
+    else if (currentTarget === inputCorDaMarcacaoEl) selectedMarkEl.dataset.cor = value;
+    else if (currentTarget === inputFormatoRetangularEl && inputFormatoRetangularEl.checked) selectedMarkEl.classList.remove('formato-oval');
+    else if (currentTarget === inputFormatoOvalEl && inputFormatoOvalEl.checked) selectedMarkEl.classList.add('formato-oval');
+});
